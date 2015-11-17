@@ -1,9 +1,9 @@
 /*Author: ronald8192*/
 var blindhelper = setInterval(function(){
-	var general = $($.makeArray($("#box > span")[0])).attr("style");
+	var general = $("#box > span").first().attr("style");
 	var ans = -1, hitCount = 0, boxCount = $("#box > span").length;
 	for (var i = 1; i < boxCount; i++) {
-		if(general !== $($.makeArray($("#box > span")[i])).attr("style")) {
+		if(general !== $("#box > span").eq(i).attr("style")) {
 			ans = i;
 			if(++hitCount > 1) {
 				ans = 0;
@@ -12,5 +12,5 @@ var blindhelper = setInterval(function(){
 		}
 		if(ans != -1 && i > 2) break;
 	};
-	$($.makeArray($("#box > span")[ans])).trigger("click");
+	$("#box > span").eq(ans).trigger("click");
 },1);
